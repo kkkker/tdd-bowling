@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -33,5 +32,15 @@ public class BowlingGameTest {
         int result = bowlingGame.calculateScoreOfTheRound(frameWithNoStrikeAndSpare);
         //Then
         assertEquals(5, result);
+    }
+
+    @Test
+    void should_return_ten_plus_the_number_of_first_knockdown_bottles_of_next_frame_when_spare() {
+        //Given
+        Frame frameWithSpare = frames.get(1);
+        //When
+        int result = bowlingGame.calculateScoreOfTheRound(frameWithSpare);
+        //Then
+        assertEquals(13, result);
     }
 }

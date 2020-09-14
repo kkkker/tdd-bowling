@@ -4,9 +4,9 @@ import java.util.List;
 public class Frame {
     private List<Integer> numbersOfKnockdownBottles = new ArrayList<>();
     private int status;
-    private static int STRIKE = 0;
-    private static int SPARE = 1;
-    private static int NO_STRIKE_AND_SPARE = 2;
+    public static int STRIKE = 0;
+    public static int SPARE = 1;
+    public static int NO_STRIKE_AND_SPARE = 2;
     public static int FIRST = 0;
     public static int SECOND = 1;
 
