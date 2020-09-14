@@ -53,4 +53,14 @@ public class BowlingGameTest {
         //Then
         assertEquals(26, result);
     }
+
+    @Test
+    void should_return_ten_plus_the_number_of_next_knockdown_bottles_when_only_one_strike() {
+        //Given
+        Frame frameWithSpare = frames.get(0);
+        //When
+        int result = bowlingGame.calculateScoreOfTheRound(frameWithSpare);
+        //Then
+        assertEquals(20, result);
+    }
 }
