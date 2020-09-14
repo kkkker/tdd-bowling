@@ -47,9 +47,9 @@ public class BowlingGameTest {
     @Test
     void should_return_twenty_plus_the_number_of_first_knockdown_bottles_of_the_second_next_frame_when_double_strike() {
         //Given
-        Frame frameWithSpare = frames.get(3);
+        Frame frameWithDoubleStrike = frames.get(3);
         //When
-        int result = bowlingGame.calculateScoreOfTheRound(frameWithSpare);
+        int result = bowlingGame.calculateScoreOfTheRound(frameWithDoubleStrike);
         //Then
         assertEquals(26, result);
     }
@@ -57,10 +57,19 @@ public class BowlingGameTest {
     @Test
     void should_return_ten_plus_the_number_of_next_knockdown_bottles_when_only_one_strike() {
         //Given
-        Frame frameWithSpare = frames.get(0);
+        Frame frameWithOneStrikeSpare = frames.get(0);
         //When
-        int result = bowlingGame.calculateScoreOfTheRound(frameWithSpare);
+        int result = bowlingGame.calculateScoreOfTheRound(frameWithOneStrikeSpare);
         //Then
         assertEquals(20, result);
+    }
+
+    @Test
+    void should_return_ten_plus_the_score_of_the_line_when_game_over() {
+        //Given
+        //When
+        int result = bowlingGame.calculateScoreOfTheLine();
+        //Then
+        assertEquals(208, result);
     }
 }

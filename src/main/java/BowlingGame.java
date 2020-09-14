@@ -30,4 +30,13 @@ public class BowlingGame {
         List<Integer> numbersOfKnockdownBottles = frame.getNumbersOfKnockdownBottles();
         return numbersOfKnockdownBottles.get(Frame.FIRST) + numbersOfKnockdownBottles.get(Frame.SECOND);
     }
+
+    public int calculateScoreOfTheLine() {
+        int sum = 0;
+        final int NUMBER_OF_FRAMES = 10;
+        for (int i = 0; i < NUMBER_OF_FRAMES; i++) {
+            sum += calculateScoreOfTheRound(this.frames.get(i));
+        }
+        return sum;
+    }
 }
