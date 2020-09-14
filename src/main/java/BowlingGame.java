@@ -3,8 +3,17 @@ import java.util.List;
 public class BowlingGame {
 
     List<Frame> frames;
+    final int NUMBER_OF_FRAMES = 10;
 
     BowlingGame(List<Frame> frames) {
+        this.frames = frames;
+    }
+
+    public List<Frame> getFrames() {
+        return frames;
+    }
+
+    public void setFrames(List<Frame> frames) {
         this.frames = frames;
     }
 
@@ -32,11 +41,27 @@ public class BowlingGame {
     }
 
     public int calculateScoreOfTheLine() {
+        if (!isGameOver()) {
+            throw new GameNotOverException();
+        }
         int sum = 0;
-        final int NUMBER_OF_FRAMES = 10;
         for (int i = 0; i < NUMBER_OF_FRAMES; i++) {
             sum += calculateScoreOfTheRound(this.frames.get(i));
         }
         return sum;
+    }
+
+    private boolean isGameOver() {
+        if (frames == null) {
+            return false;
+        }
+        int sizeOfFrames = frames.size();
+        if (sizeOfFrames < NUMBER_OF_FRAMES) {
+            return false;
+        }
+        if (sizeOfFrames == NUMBER_OF_FRAMES && frames.get(sizeOfFrames - 1).getStatus() != Frame.NO_STRIKE_AND_SPARE) {
+            return false;
+        }
+        return sizeOfFrames != NUMBER_OF_FRAMES + 1 || frames.get(sizeOfFrames - 1).getStatus() != Frame.STRIKE;
     }
 }

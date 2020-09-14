@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BowlingGameTest {
     private static List<Frame> frames = new ArrayList<>();
@@ -71,5 +72,25 @@ public class BowlingGameTest {
         int result = bowlingGame.calculateScoreOfTheLine();
         //Then
         assertEquals(208, result);
+    }
+
+    @Test
+    void should_throw_game_not_over_exception_when_game_not_over() {
+        assertThrows(GameNotOverException.class, () -> {
+            List<Frame> frames = new ArrayList<>();
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(6 , 4));
+            frames.add(new Frame(3 , 2));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(6 , 1));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(10 , 0));
+            frames.add(new Frame(10 , 0));
+            BowlingGame notOverBowlingGame = new BowlingGame(frames);
+            notOverBowlingGame.calculateScoreOfTheLine();
+        });
     }
 }
