@@ -43,4 +43,13 @@ public class BowlingGameTest {
         //Then
         assertEquals(13, result);
     }
+
+    void should_return_twenty_plus_the_number_of_first_knockdown_bottles_of_the_second_next_frame_when_double_strike() {
+        //Given
+        Frame frameWithSpare = frames.get(3);
+        //When
+        int result = bowlingGame.calculateScoreOfTheRound(frameWithSpare);
+        //Then
+        assertEquals(26, result);
+    }
 }

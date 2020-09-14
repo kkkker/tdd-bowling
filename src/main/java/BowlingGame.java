@@ -9,12 +9,21 @@ public class BowlingGame {
     }
 
     public int calculateScoreOfTheRound(Frame frame) {
+
+        if (frame.getStatus() == Frame.NO_STRIKE_AND_SPARE) {
+            List<Integer> numbersOfKnockdownBottles = frame.getNumbersOfKnockdownBottles();
+            return numbersOfKnockdownBottles.get(Frame.FIRST) + numbersOfKnockdownBottles.get(Frame.SECOND);
+        }
+
         final int NUMBER_OF_BOTTLES = 10;
+        int indexOfThisFrame = frames.indexOf(frame);
         if (frame.getStatus() == Frame.SPARE) {
-            int indexOfThisFrame = frames.indexOf(frame);
             return NUMBER_OF_BOTTLES + frames.get(indexOfThisFrame + 1).getNumbersOfKnockdownBottles().get(Frame.FIRST);
         }
-        List<Integer> numbersOfKnockdownBottles = frame.getNumbersOfKnockdownBottles();
-        return numbersOfKnockdownBottles.get(Frame.FIRST) + numbersOfKnockdownBottles.get(Frame.SECOND);
+
+        if (frames.get(indexOfThisFrame + 1).getStatus() == Frame.STRIKE) {
+            return NUMBER_OF_BOTTLES * 2 + frames.get(indexOfThisFrame + 2).getNumbersOfKnockdownBottles().get(Frame.FIRST);
+        }
+        return 0;
     }
 }
