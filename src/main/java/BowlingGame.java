@@ -9,14 +9,6 @@ public class BowlingGame {
         this.frames = frames;
     }
 
-    public List<Frame> getFrames() {
-        return frames;
-    }
-
-    public void setFrames(List<Frame> frames) {
-        this.frames = frames;
-    }
-
     public int calculateScoreOfTheRound(Frame frame) {
 
         if (frame.getStatus() == Frame.NO_STRIKE_AND_SPARE) {
