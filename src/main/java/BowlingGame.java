@@ -9,7 +9,7 @@ public class BowlingGame {
         this.frames = frames;
     }
 
-    public int calculateScoreOfTheRound(Frame frame) {
+    private int calculateScoreOfTheRound(Frame frame) {
 
         if (frame.getStatus() == Frame.NO_STRIKE_AND_SPARE) {
             return numberOfKnockdownBottlesIn(frame);
