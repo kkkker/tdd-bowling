@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class BowlingGameTest {
 
     @Test
-    void should_return_ten_plus_the_score_of_the_line_when_game_over() {
+    void should_return_the_score_of_the_line_when_game_over() {
         //Given
         List<Frame> frames = new ArrayList<>();
         frames.add(new Frame(10 , 0));
@@ -29,6 +29,52 @@ public class BowlingGameTest {
         int result = bowlingGame.calculateScoreOfTheLine();
         //Then
         assertEquals(208, result);
+    }
+
+    @Test
+    void should_return_300_when_every_frame_is_strike() {
+        //Given
+        List<Frame> frames = new ArrayList<>();
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        frames.add(new Frame(10 , 0));
+        BowlingGame bowlingGame= new BowlingGame(frames);
+        //When
+        int result = bowlingGame.calculateScoreOfTheLine();
+        //Then
+        assertEquals(300, result);
+    }
+
+    @Test
+    void should_return_zero_when_every_frame_is_zero() {
+        //Given
+        List<Frame> frames = new ArrayList<>();
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        frames.add(new Frame(0 , 0));
+        BowlingGame bowlingGame= new BowlingGame(frames);
+        //When
+        int result = bowlingGame.calculateScoreOfTheLine();
+        //Then
+        assertEquals(0, result);
     }
 
     @Test
